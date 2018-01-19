@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="styles/css/features/ui-kit.css" rel="stylesheet" />
+    <link href="styles/demo/demo.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <section id="navMenu" class="demo-zone">
+            <h1>
+                <a href="#navMenu">Nav Menu</a>
+            </h1>
+            <ng-include src="'partials/nav-menu.html'"></ng-include>
+        </section>
+
+        <section id="buttons" class="demo-zone">
+            <h1>
+                <a href="#buttons">Buttons</a>
+            </h1>
+            <ng-include src="'partials/button.html'"></ng-include>
+        </section>
+
+        <section id="inputs" class="demo-zone">
+            <h1>
+                <a href="#inputs">Inputs</a>
+            </h1>
+            <ng-include src="'partials/input.html'"></ng-include>
+        </section>
+
+        <section id="readonly" class="demo-zone">
+            <h1>
+                <a href="#readonly">Read Only</a>
+            </h1>
+            <ng-include src="'partials/readonly.html'"></ng-include>
+        </section>
+
+        <section id="dropdown" class="demo-zone">
+            <h1>
+                <a href="#dropdown">DropDown</a>
+            </h1>
+            <!--<ng-include src="'partials/dropdown.html'"></ng-include>-->
+            <h5 class="mr-b5">Normal Dropdown</h5>
+            <div role="combobox" class="ui-kit-control">
+                <select class="selectpicker show-tick" title="Choose ...">
+                    <option value="0" title="Hot Dog, Fries and a Soda" class="special">Hot Dog, Fries and a Soda</option>
+                    <option value="1" title="Burger, Shake and a Smile" class="special">Burger, Shake and a Smile</option>
+                    <option value="2" title="Sugar, Spice and all things nice Sugar, Spice and all things nice" class="special">Sugar, Spice and all things nice Sugar, Spice and all things nice Sugar, Spice and all things nice</option>
+                </select>
+            </div>
+            <h5 class="mr-t20 mr-b5">Disabled Dropdown</h5>
+            <div role="combobox" class="ui-kit-control block">
+                <select class="selectpicker show-tick" title="Choose ..." disabled="disabled">
+                    <option title="Hot Dog, Fries and a Soda" class="special">Hot Dog, Fries and a Soda</option>
+                    <option title="Burger, Shake and a Smile" class="special">Burger, Shake and a Smile</option>
+                    <option title="Sugar, Spice and all things nice Sugar, Spice and all things nice" class="special">Sugar, Spice and all things nice Sugar, Spice and all things nice Sugar, Spice and all things nice</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="checkboxes" class="demo-zone">
+            <h1>
+                <a href="#checkboxes">Checkbox</a>
+            </h1>
+            <ng-include src="'partials/checkbox.html'"></ng-include>
+        </section>
+
+        <section id="radios" class="demo-zone">
+            <h1>
+                <a href="#radios">Radio Button</a>
+            </h1>
+            <ng-include src="'partials/radio.html'"></ng-include>
+        </section>
+
+        <section id="groups" class="demo-zone">
+            <h1>
+                <a href="#groups">Groups</a>
+            </h1>
+            <ng-include src="'partials/input-group.html'"></ng-include>
+        </section>
+
+        <section id="tooltips" class="demo-zone">
+            <h1>
+                <a href="#tooltips">Tooltip</a>
+            </h1>
+            <ng-include src="'partials/tooltip.html'"></ng-include>
+        </section>
+
+        <section id="messages" class="demo-zone">
+            <h1>
+                <a href="#messages">Messages</a>
+            </h1>
+            <ng-include src="'partials/message.html'"></ng-include>
+        </section>
+
+        <section id="forms" class="demo-zone">
+            <h1>
+                <a href="#forms">Forms</a>
+            </h1>
+            <ng-include src="'partials/forms.html'"></ng-include>
+        </section>
+
+        <section id="grids" class="demo-zone">
+            <h1>
+                <a href="#grids">Grids</a>
+            </h1>
+            <ng-include src="'partials/grids.html'"></ng-include>
+        </section>
+
+        <section id="modals" class="demo-zone">
+            <h1>
+                <a href="#modals">Modals</a>
+            </h1>
+            <ng-include src="'partials/modal.html'"></ng-include>
+        </section>
+
+        <section id="accordion" class="demo-zone">
+            <h1>
+                <a href="#accordion">Accordion</a>
+            </h1>
+            <ng-include src="'partials/accordion.html'"></ng-include>
+        </section>
+
+        <section id="tabs" class="demo-zone">
+            <h1>
+                <a href="#tabs">Tabs</a>
+            </h1>
+            <ng-include src="'partials/tabs.html'"></ng-include>
+        </section>
+
+        <section id="pager" class="demo-zone">
+            <h1>
+                <a href="#pager">Pager</a>
+            </h1>
+            <ng-include src="'partials/pager.html'"></ng-include>
+        </section>
+
+        <section id="loader" class="demo-zone">
+            <h1>
+                <a href="#loader">Loader</a>
+            </h1>
+            <ng-include src="'partials/loader.html'"></ng-include>
+        </section>
+    </div>
+
+    <script src="scripts/vendors/jquery-3.1.1/jquery-3.1.1.js"></script>
+
+    <!--Angular-->
+    <script src="scripts/vendors/angular/angular v1.6.1.js"></script>
+
+    <!--Bootstrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!--Bootstrap Select-->
+    <!--<script src="ui-kit/scripts/vendors/bootstrap/bootstrap-select.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+    <script src="scripts/bundled/ui-kit.min.js"></script>
+    <script>
+        $(function () {
+            //setTimeout(function () {
+            //    $('#myModal').on('show.bs.modal', function (e) {
+            //        alert('Modal show');
+            //    })
+            //    $('#myModal').on('shown.bs.modal', function (e) {
+            //        alert('Modal Shown');
+            //    })
+            //    $('#myModal').on('hide.bs.modal', function (e) {
+            //        alert('Modal hide');
+            //    })
+            //    $('#myModal').on('hidden.bs.modal', function (e) {
+            //        alert('Modal hidden');
+            //    })
+            //}, 100);
+            setTimeout(function () {
+                $('.loader1').click(function () {
+                    $('.loader-circular').addClass('fade-in');
+                });
+
+                $('.loader2').click(function () {
+                    $('.loader-bounce').addClass('fade-in');
+                });
+
+                $('.overlay').click(function () {
+                    $(this).removeClass('fade-in');
+                })
+            }, 50);
+        })
+    </script>
+</body>
+</html>

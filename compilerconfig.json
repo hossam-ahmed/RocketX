@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "styles/demo/demo.css",
+    "inputFile": "styles/demo/demo.less"
+  },
+  {
+    "outputFile": "styles/css/features/ui-kit.css",
+    "inputFile": "styles/src/features/ui-kit/ui-kit.scss"
+  },
+  {
+    "outputFile": "styles/css/features/ui-kit-rtl.css",
+    "inputFile": "styles/src/features/ui-kit/ui-kit-rtl.scss"
+  }
+]
