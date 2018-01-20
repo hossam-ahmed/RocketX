@@ -1,0 +1,18 @@
+﻿/* ============= Core Modules ============= */
+
+// initialize
+@import "_initialize.scss";
+
+// fonts are moved to feature less files (to be extendable)
+
+// normalize
+@import "_normalize.scss";
+
+// layouts
+@import "_layouts.scss";
+
+/* ============= Component Modules ============= */
+
+// integrated with _layouts.scss (better design) >> // TODO: to make xs and md components for animation in layouts
+/*// animation
+@import "../components/initializer/_animations.scss";*/

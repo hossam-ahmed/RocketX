@@ -1,0 +1,66 @@
+﻿// _text.scss
+
+// color
+@include generate-txt-palette();
+
+// transform
+.uppercase {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.init-case {
+    text-transform: initial;
+}
+
+.underlined {
+    &, &:hover {
+        text-decoration: underline;
+    }
+}
+
+.three-dots {
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.num-txt {
+    direction: ltr;
+    @extend .txt-start;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+// weight
+.fw-bold {
+    font-weight: bold;
+}
+
+.ff-bold {
+    font-family: $basic-font-bold;
+}
+
+// align
+.txt-start {
+    @include txt-start();
+}
+
+.txt-end {
+    @include txt-end();
+}
+
+.txt-center {
+    text-align: center;
+}

@@ -1,0 +1,154 @@
+﻿#contentBox {
+    margin: 0 !important;
+    min-width: 0;
+}
+
+#contentRow {
+    padding-top: 0;
+}
+
+#pageStatusBar[class] {
+    margin-bottom: 0;
+}
+
+.s4-wpcell-plain {
+    margin: 0 !important;
+}
+
+.container {
+    max-width: 100%;
+}
+
+.zone-content {
+    > .ms-webpart-zone {
+        @extend .block;
+
+        > .s4-wpcell-plain {
+            @extend .block;
+
+            > .ms-webpart-chrome {
+                @extend .block;
+            }
+        }
+
+        .ms-webpart-cell-vertical {
+            @extend .block;
+
+            .ms-webpart-chrome-vertical {
+                @extend .block;
+            }
+        }
+    }
+}
+
+.inner-content-zone {
+    .ms-webpart-zone {
+        @extend .block;
+
+        .s4-wpcell-plain {
+            @extend .block;
+
+            .ms-webpart-chrome {
+                @extend .block;
+            }
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+#s4-workspace {
+    background: transparent;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+#s4-bodyContainer {
+    padding-bottom: 0 !important;
+}
+// edit sp fix
+#MSO_tblPageBody {
+    @extend .block;
+
+    > tbody {
+        @extend .block;
+
+        > tr {
+            @extend .block;
+
+            > td {
+                @extend .block;
+
+                &:first-child {
+                    > table {
+                        @extend .block;
+
+                        > tbody {
+                            @extend .block;
+
+                            > tr {
+                                @extend .block;
+
+                                > td {
+                                    @extend .block;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &#MSOTlPn_MainTD {
+                    @include end(100px);
+                    z-index: 1005;
+                    width: auto !important;
+                    box-shadow: 0 3px 9px 2px rgba(0,0,0,0.3);
+                    max-height: 90%;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    @extend .fixed, .center-vert;
+
+                    @if($gen-is-cornered) {
+                        @extend .cornered-large;
+                    }
+
+                    input[type=password], input[type=text], input[type=file], textarea, .ms-inputBox {
+                        @extend .border-box;
+                    }
+                }
+            }
+        }
+    }
+}
+
+[id*="PlaceHolderMain_EditMode"] {
+    img {
+        max-width: 100%;
+    }
+}
+
+.publish-content .ms-rtestate-field p, .publish-content p.ms-rteElement-P {
+    margin: 10px 0;
+}
+
+div[ta-text-editor-class="border-around"] ol, div[ta-text-editor-class="border-around"] ul {
+    list-style: decimal;
+    margin: 0 20px;
+}
+
+input[type=button],
+input[type=reset],
+input[type=submit],
+button {
+    min-width: 0;
+}
+
+.zone-content-wrapper .ms-WPBorder {
+    border: none;
+}
+
+#DeltaPageStatusBar {
+    z-index: 10;
+    @extend .relative;
+}

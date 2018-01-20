@@ -1,0 +1,23 @@
+// general accordion configurations
+$is-tab-cornered: $gen-is-cornered;
+$is-tab-bordered: $gen-is-bordered;
+$tab-style: merged;
+$tab-border-width: $gen-border-width;
+$tab-border-style: $gen-border-style;
+$tab-border-color: $gen-border-color;
+$tab-border-radius: $border-radius-regular;
+$tab-anim-dur: .3s;
+
+// tab nav
+$tab-nav-bg-clr: transparent;
+$tab-nav-hover-bg-clr: #eee;
+$tab-nav-txt-clr: map-get($grey-shadows, 1);
+$tab-nav-hover-txt-clr: map-get($theme-colors, default);
+$tab-nav-active-bg-clr: #fff;
+$tab-nac-active-txt-clr: map-get($grey-shadows, 1);
+
+// tab body
+$tab-horiz-padd: 20px;
+$tab-vert-padd: 10px;
+$tab-body-bg-clr: #fff;
+$tab-body-txt-clr: inherit;

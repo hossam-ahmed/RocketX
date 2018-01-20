@@ -1,0 +1,97 @@
+// variables
+@import "tabs-variables";
+
+.#{$prefix}-tabs[role="tablist"] {
+    .fade {
+        -moz-transition-duration: $tab-anim-dur;
+        -o-transition-duration: $tab-anim-dur;
+        -webkit-transition-duration: $tab-anim-dur;
+        transition-duration: $tab-anim-dur;
+    }
+
+    .nav-tabs {
+        border-bottom: 0;
+        @extend .table-layout-sm;
+
+        > li {
+            margin-bottom: 0;
+            height: 100%; // to fix hover effect (background appear completly in the item)
+            @extend .table-cell, .block-xs, .pull-none;
+
+            > a {
+                height: 100%;
+                background-color: $tab-nav-bg-clr;
+                color: $tab-nav-txt-clr;
+                @include mr-start(0);
+                @include mr-end(0);
+
+                @if ($is-tab-cornered) {
+                    border-radius: $tab-border-radius $tab-border-radius 0 0;
+                }
+                @else {
+                    border-radius: 0;
+                }
+
+                @extend .block, .three-dots;
+
+                &:hover {
+                    cursor: default;
+                    background-color: $tab-nav-hover-bg-clr;
+                    color: $tab-nav-hover-txt-clr;
+                }
+            }
+
+            @if ($is-tab-bordered) {
+                @if ($tab-style==merged) {
+                    > a {
+                        border-bottom: $tab-border-width $tab-border-style $tab-border-color;
+                    }
+                }
+
+                @if ($tab-style==seperate) {
+                    > a {
+                        border: $tab-border-width $tab-border-style $tab-border-color;
+                    }
+                }
+
+                &.active {
+                    > a {
+                        @if ($tab-style==merged) {
+                            border: $tab-border-width $tab-border-style $tab-border-color;
+                            border-bottom-color: transparent;
+                        }
+                    }
+                }
+            }
+
+            @if ($is-tab-bordered!=true) {
+                > a {
+                    border: 0;
+                }
+            }
+
+            &.active {
+                > a {
+                    background-color: $tab-nav-active-bg-clr;
+                    color: $tab-nac-active-txt-clr;
+                }
+            }
+
+            @if ($is-tab-bordered and $tab-style==seperate) {
+                + li {
+                    > a {
+                        @include border-start(0);
+                    }
+                }
+            }
+        }
+    }
+
+    .tab-content {
+        > .tab-pane {
+            padding: $tab-vert-padd $tab-horiz-padd;
+            background-color: $tab-body-bg-clr;
+            color: $tab-body-txt-clr;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+/* Start Custom Style For BootStrap Select */
+.#{$prefix}-control {
+    &[role="combobox"] {
+        > .bootstrap-select {
+            min-width: 0;
+            @extend .full-width;
+
+            &.btn-group {
+                .dropdown-menu {
+                    max-width: 100%;
+
+                    li {
+                        a {
+                            span {
+                                white-space: normal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

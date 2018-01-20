@@ -1,0 +1,61 @@
+﻿// _padding.scss
+
+.zero-padd {
+    padding: 0 !important;
+}
+
+.zero-horiz-padd {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.zero-vert-padd {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.padd-10 {
+    padding: 10px;
+}
+
+.padd-15 {
+    padding: 15px;
+}
+
+.padd-20 {
+    padding: 20px;
+}
+
+.padd-30 {
+    padding: 30px;
+}
+
+.padd-v5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.padd-v10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.padd-v20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.padd-h10 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.padd-h20 {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.padd-h30 {
+    padding-right: 30px;
+    padding-left: 30px;
+}

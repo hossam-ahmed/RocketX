@@ -1,0 +1,157 @@
+﻿@import "tooltip-variables";
+
+.tooltipped {
+    overflow: visible !important;
+    @extend .relative;
+
+    @if($has-caret) {
+        $pseudo-selectors: '&:before, &:after' !global;
+    }
+    @else {
+        $pseudo-selectors: '&:before' !global;
+    }
+
+    #{$pseudo-selectors} {
+        top: 100%;
+        left: 50%;
+        -moz-transform: translateX(-50%) scale(0);
+        -ms-transform: translateX(-50%) scale(0);
+        -o-transform: translateX(-50%) scale(0);
+        -webkit-transform: translateX(-50%) scale(0);
+        transform: translateX(-50%) scale(0);
+        @extend .fade-out, .absolute, .cubic-bezier-mono-transition;
+    }
+
+    &:before {
+        content: attr(data-title);
+        padding: 5px 10px 7px;
+        line-height: 1.3;
+
+        @if ($is-tooltip-cornered) {
+            border-radius: $tooltip-border-radius;
+        }
+
+        margin-top: $tooltip-shiftSpacing;
+        font-size: 12px;
+        font-weight: normal;
+        z-index: 50;
+        background-color: $tooltip-bg-clr;
+        color: $tooltip-txt-color;
+        @extend .nowrap, .border-box;
+    }
+
+    @if($has-caret) {
+        &:after {
+            margin-top: $tooltip-shiftSpacing - $tooltip-caret-size;
+            @include top-caret($tooltip-bg-clr, $tooltip-caret-size);
+        }
+    }
+
+    &:hover {
+        #{$pseudo-selectors} {
+            -moz-transform: translateX(-50%) scale(1);
+            -ms-transform: translateX(-50%) scale(1);
+            -o-transform: translateX(-50%) scale(1);
+            -webkit-transform: translateX(-50%) scale(1);
+            transform: translateX(-50%) scale(1);
+            @extend .fade-in;
+        }
+    }
+
+    &.start, &.end {
+        #{$pseudo-selectors} {
+            top: 50%;
+            margin-top: 0;
+            left: auto;
+            -moz-transform: translate(0, -50%) scale(0);
+            -ms-transform: translate(0, -50%) scale(0);
+            -o-transform: translate(0, -50%) scale(0);
+            -webkit-transform: translate(0, -50%) scale(0);
+            transform: translate(0, -50%) scale(0);
+        }
+    }
+
+    &.start {
+        &:before {
+            @include start(-$tooltip-shiftSpacing);
+        }
+
+        @if($has-caret) {
+            &:after {
+                @include start(-$tooltip-shiftSpacing + $tooltip-caret-size);
+                @include start-caret($tooltip-bg-clr, $tooltip-caret-size);
+            }
+        }
+
+        &:hover {
+            #{$pseudo-selectors} {
+                -moz-transform: translate($inverse-const*-100%, -50%) scale(1);
+                -ms-transform: translate($inverse-const*-100%, -50%) scale(1);
+                -o-transform: translate($inverse-const*-100%, -50%) scale(1);
+                -webkit-transform: translate($inverse-const*-100%, -50%) scale(1);
+                transform: translate($inverse-const*-100%, -50%) scale(1);
+            }
+        }
+    }
+
+    &.end {
+        &:before {
+            @include end(-$tooltip-shiftSpacing);
+        }
+
+        @if($has-caret) {
+            &:after {
+                @include end(-$tooltip-shiftSpacing + $tooltip-caret-size);
+                @include end-caret($tooltip-bg-clr, $tooltip-caret-size);
+            }
+        }
+
+        &:hover {
+            #{$pseudo-selectors} {
+                -moz-transform: translate($inverse-const*100%, -50%) scale(1);
+                -ms-transform: translate($inverse-const*100%, -50%) scale(1);
+                -o-transform: translate($inverse-const*100%, -50%) scale(1);
+                -webkit-transform: translate($inverse-const*100%, -50%) scale(1);
+                transform: translate($inverse-const*100%, -50%) scale(1);
+            }
+        }
+    }
+
+    &.top {
+        #{$pseudo-selectors} {
+            top: auto;
+            bottom: 100%;
+            margin-top: 0;
+        }
+
+        &:before {
+            margin-bottom: $tooltip-shiftSpacing;
+        }
+
+        @if($has-caret) {
+            &:after {
+                margin-bottom: $tooltip-shiftSpacing - $tooltip-caret-size;
+                @include bottom-caret($tooltip-bg-clr, $tooltip-caret-size);
+            }
+        }
+    }
+
+    &.fit-width, &.stretch {
+        &:before {
+            white-space: normal;
+            @extend .txt-center;
+        }
+    }
+
+    &.fit-width {
+        &:before {
+            max-width: 100%;
+        }
+    }
+
+    &.stretch {
+        &:before {
+            @extend .full-width;
+        }
+    }
+}

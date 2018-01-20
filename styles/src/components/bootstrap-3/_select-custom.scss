@@ -1,0 +1,49 @@
+// variables
+@import "select-custom-variables";
+
+.#{$prefix}-control {
+    &[role="combobox"] {
+        > .bootstrap-select {
+            min-width: 0;
+            @extend .full-width;
+
+            &.btn-group {
+                .dropdown-toggle {
+                    @if not $is-dd-cornered {
+                        border-radius: 0;
+                    }
+                }
+
+                .dropdown-menu {
+                    max-width: 300px;
+
+                    @if not $is-dd-cornered {
+                        border-radius: 0;
+                    }
+
+                    li {
+                        a {
+                            padding: 0;
+
+                            span {
+                                &.text {
+                                    @include padd-all(10px, 30px, 10px, 20px);
+                                    @extend .block, .three-dots;
+                                }
+                            }
+                        }
+
+                        &.selected {
+                            > a {
+                                &, &:hover {
+                                    background-color: $selected-item-bg-clr;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* End Custom Style For BootStrap Select */

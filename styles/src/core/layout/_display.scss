@@ -1,0 +1,142 @@
+﻿// _display.scss
+
+.block {
+    display: block;
+}
+
+.block-imp {
+    display: block !important;
+}
+
+.hide {
+    display: none;
+}
+
+.hide-imp {
+    display: none !important;
+}
+
+.in-block {
+    display: inline-block;
+    @extend .va-middle;
+}
+
+.va-middle {
+    vertical-align: middle;
+}
+
+.#{prefix}-table {
+    display: table;
+
+    &.collapse, %t_clpse {
+        border-collapse: collapse;
+    }
+}
+
+&.in-table {
+    display: inline-table;
+    @extend .va-middle;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.fixed-table {
+    table-layout: fixed;
+}
+
+.table-cell {
+    display: table-cell;
+
+    &.top {
+        vertical-align: top;
+    }
+
+    &.middle {
+        vertical-align: middle;
+    }
+
+    &.bottom {
+        vertical-align: bottom;
+    }
+}
+
+.fit-content {
+    width: 1px;
+}
+
+.table-layout, .table-layout-sm, .table-layout-md, .table-layout-lg {
+
+    @extend .#{prefix}-table, %t_clpse;
+
+    > .table-row-layout {
+        @extend .table-row;
+
+        > .table-cell-layout {
+            @extend .table-cell;
+
+            &.top {
+                vertical-align: top;
+            }
+
+            &.middle {
+                @extend .va-middle;
+            }
+
+            &.bottom {
+                vertical-align: bottom;
+            }
+
+            + .table-cell-layout {
+                @include padd-start(20px);
+            }
+        }
+
+        &.top {
+            > .table-cell-layout {
+                vertical-align: top;
+            }
+        }
+
+        &.middle {
+            > .table-cell-layout {
+                @extend .va-middle;
+            }
+        }
+
+        &.bottom {
+            > .table-cell-layout {
+                vertical-align: bottom;
+            }
+        }
+    }
+
+    &.top {
+        > .table-row-layout {
+            > .table-cell-layout {
+                vertical-align: top;
+            }
+        }
+    }
+
+    &.middle {
+        > .table-row-layout {
+            > .table-cell-layout {
+                @extend .va-middle;
+            }
+        }
+    }
+
+    &.bottom {
+        > .table-row-layout {
+            > .table-cell-layout {
+                vertical-align: bottom;
+            }
+        }
+    }
+
+    &.inline, &.inline-sm {
+        @extend .in-table;
+    }
+}

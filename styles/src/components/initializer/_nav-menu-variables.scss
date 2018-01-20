@@ -1,0 +1,52 @@
+﻿// general configuations
+$menu-item-horiz-padd: 7px;
+$menu-item-vert-padd: 15px;
+$menu-font-size: .87em;
+$hide-root-item: true;
+$is-menu-bordered: false;
+$is-menu-cornered: true;
+
+// menu item
+$menu-border-radius: $border-radius-regular;
+$menu-border-style: $gen-border-style;
+$menu-border-width: $gen-border-width;
+$menu-border-color: $gen-border-color;
+$menu-item-txt-clr: map-get($grey-shadows, 1);
+$menu-item-txt-hover-clr: map-get($theme-colors, default);
+$menu-item-bg-clr: transparent;
+$menu-item-hover-bg-clr: transparent;
+
+// menu selected item
+$menu-selec-item-txt-clr: #fff;
+$menu-selec-item-bg-clr: map-get($theme-colors, default);
+$menu-selec-item-hover-txt-clr: #fff;
+$menu-selec-item-hover-bg-clr: map-get($theme-colors, default);
+
+// menu dropdown
+$menu-dd-bg-clr: #fff;
+$is-menu-dd-cornered: true;
+$is-menu-dd-bordered: true;
+$is-menu-dd-shaded: true;
+$show-menu-dd-caret: true;
+$menu-dd-caret-size: 8px;
+$menu-dd-caret-clr: #fff;
+$menu-dd-vert-padd: 5px;
+$menu-dd-horiz-padd: 0;
+$menu-dd-border-radius: $border-radius-regular;
+$menu-dd-border: $gen-border-width $gen-border-style $gen-border-color;
+$menu-dd-anim-effect: slide-down; // or fade
+$menu-dd-trans-origin: top center;
+$menu-dd-hover-delay: 0s;
+$menu-dd-release-delay: .2s;
+$menu-dd-anim-func: simple; // or cubic
+
+// menu dropdown item
+$menu-dd-item-vert-padd: 5px;
+$menu-dd-item-horiz-padd: 10px;
+$menu-dd-item-txt-clr: map-get($grey-shadows, 1);
+$menu-dd-item-bg-clr: transparent;
+$menu-dd-item-hover-txt-clr: map-get($grey-shadows, 1);
+$menu-dd-item-hover-bg-clr: #eee;
+$item-has-children-icon: $icon-chevron-thin-down;
+$item-has-children-icon-txt-clr: #fff;
+$item-has-children-icon-bg-clr: map-get($theme-colors, default);

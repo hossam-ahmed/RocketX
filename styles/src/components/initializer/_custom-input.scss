@@ -1,0 +1,198 @@
+﻿// variables
+@import "custom-input-variables";
+
+.#{$prefix}-control {
+    $dim: 20px;
+    @extend .relative, .in-block;
+
+    .toggler-input {
+        opacity: 0;
+        margin: 0;
+        top: 0;
+        height: 100%;
+        cursor: pointer;
+        z-index: 10;
+        @include start(0);
+        @extend .absolute, .full-width;
+
+        ~ .toggler-state {
+            width: $dim;
+            height: $dim;
+            border: 2px solid $gen-border-color;
+            top: 0;
+            @include start(0);
+            @extend .border-box, .absolute, .simple-mono-transition, .bg_white-clr;
+
+            &:before {
+                top: 50%;
+                left: 50%;
+                -moz-transform: translate(-50%, -50%) scale(0);
+                -ms-transform: translate(-50%, -50%) scale(0);
+                -o-transform: translate(-50%, -50%) scale(0);
+                -webkit-transform: translate(-50%, -50%) scale(0);
+                transform: translate(-50%, -50%) scale(0);
+                @extend .absolute, .simple-mono-transition, .fade-out;
+            }
+
+            &:after {
+                $shift: 13px;
+                content: '';
+                top: -$shift;
+                right: -$shift;
+                bottom: -$shift;
+                left: -$shift;
+                background-color: rgba(0,0,0,.15);
+                border-radius: 50%;
+                @extend .absolute, .simple-mono-transition, .fade-out;
+            }
+        }
+
+        ~ .toggler-btn {
+            z-index: 5;
+            cursor: pointer;
+            font: normal #{15px/$dim}em $basic-font;
+            margin-top: -2px;
+            @include padd-start($dim + 5);
+            @include padd-end(35px);
+            @extend .relative, .in-block, .simple-mono-transition, .txt_grey_clr-3, .mr-b5;
+
+            &[disabled] {
+                label {
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        &:hover {
+            ~ .toggler-btn {
+                text-shadow: 0 0 2px rgba(0,0,0,.3);
+            }
+
+            ~ .toggler-state {
+                box-shadow: 0 0 5px rgba(0,0,0,.3);
+            }
+        }
+
+        &:active {
+            ~ .toggler-state {
+                &:after {
+                    @extend .fade-in;
+                }
+            }
+        }
+
+        &:focus {
+            ~ .toggler-state {
+                border: 2px solid map-get($theme-colors, default);
+            }
+        }
+
+        &:checked {
+            ~ .toggler-btn {
+                color: lighten(map-get($theme-colors, default),10%);
+            }
+
+            ~ .toggler-state {
+                background-color: map-get($theme-colors, default);
+                border-color: transparent;
+
+                &:before {
+                    -moz-transform: translate(-50%, -50%) scale(1);
+                    -ms-transform: translate(-50%, -50%) scale(1);
+                    -o-transform: translate(-50%, -50%) scale(1);
+                    -webkit-transform: translate(-50%, -50%) scale(1);
+                    transform: translate(-50%, -50%) scale(1);
+                    @extend .fade-in;
+                }
+            }
+        }
+
+        &:disabled {
+            ~ .toggler-btn {
+                opacity: .7;
+                cursor: default;
+
+                &:hover {
+                    ~ .toggler-state {
+                        box-shadow: none;
+                    }
+                }
+
+                &:active {
+                    ~ .toggler-state {
+                        &:after {
+                            opacity: 0;
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+
+            ~ .toggler-state {
+                box-shadow: none;
+                opacity: .5;
+            }
+
+            &:checked {
+                ~ .toggler-btn {
+                    @extend .txt_grey_clr-1;
+                }
+
+                ~ .toggler-state {
+                    background-color: #aaa;
+                }
+            }
+
+            &:hover {
+                ~ .toggler-btn {
+                    text-shadow: none;
+                }
+            }
+        }
+    }
+
+    &[role="checkbox"] {
+        .toggler-input {
+            ~ .toggler-state {
+                @if ($is-cornered) {
+                    border-radius: $checkbox-border-radius;
+                }
+
+                &:before {
+                    content: $icon-check;
+                    font-size: .8em;
+                    @extend .txt_white-clr, .font-icon !optional;
+                }
+            }
+        }
+    }
+
+    &[role="radio"] {
+        $border-radius: 50%;
+
+        .toggler-state {
+            border-radius: $border-radius;
+
+            &:before {
+                content: '';
+                width: $dim/2;
+                height: $dim/2;
+                border-radius: $border-radius;
+                @extend .bg_white-clr;
+            }
+        }
+    }
+}
+
+.#{$prefix}-group {
+    &.vertical {
+        .#{$prefix}-control {
+            @extend .block;
+            @include mr-start(0);
+
+            + .#{$prefix}-control {
+                @extend .mr-t10;
+            }
+        }
+    }
+}

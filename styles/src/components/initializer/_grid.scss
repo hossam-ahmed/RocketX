@@ -1,0 +1,174 @@
+﻿// grid variables
+@import "grid-variables";
+
+.#{$prefix}-grid {
+    &[role="treegrid"] {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .#{$prefix}-grid-control {
+        @extend .full-width;
+        border-collapse: separate !important;
+        overflow: hidden;
+
+        tr {
+            th {
+                background-color: $grid-header-bg-color;
+                font: normal 1em $basic-font;
+                @extend .txt-center, .txt_white-clr;
+
+                > a {
+                    @extend .txt_white-clr;
+                }
+
+                .sort-link {
+                    @include padd-end(20px);
+                    color: map-get($grey-shadows, 4);
+                    cursor: pointer;
+                    @extend .block, .relative, .simple-mono-transition;
+
+                    span {
+                        @extend .block;
+                    }
+
+                    &:hover {
+                        @extend .txt_white-clr;
+                    }
+
+                    .sort-icon {
+                        @include end(0);
+                        @extend .center-vert, .absolute;
+                    }
+                }
+
+                @if ($is-cornered) {
+                    &:first-child {
+                        @include border-radius-all($border-radius-regular, 0, 0, 0);
+                    }
+
+                    &:last-child {
+                        @include border-radius-all(0, $border-radius-regular, 0, 0);
+                    }
+                }
+            }
+
+            th, td {
+                padding: 6px 15px;
+                border-bottom: $grid-border-width $grid-border-style transparent;
+            }
+
+            td {
+                border-bottom: $grid-border-width $grid-border-style $grid-border-color;
+                @include border-end($grid-border-width $grid-border-style $grid-border-color);
+                font-size: .9em;
+
+                .#{$prefix}-control[role="button"] {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+
+                &:first-child {
+                    @include border-start($grid-border-width $grid-border-style $grid-border-color);
+                }
+
+                &:last-child {
+                    text-align: center;
+                }
+            }
+
+            @if ($is-cornered) {
+                &:last-child {
+                    td {
+                        &:first-child {
+                            @include border-radius-all(0, 0, 0, $border-radius-regular);
+                        }
+
+                        &:last-child {
+                            @include border-radius-all(0, 0, $border-radius-regular, 0);
+                        }
+                    }
+                }
+            }
+
+            &.gridPager {
+                > td {
+                    border: none;
+                    @extend .txt-center;
+
+                    a {
+                        padding: 5px 10px;
+                        color: map-get($theme-colors, primary);
+                        border-radius: $border-radius-regular;
+                        @extend .in-block, .simple-mono-transition;
+
+                        &:hover {
+                            background-color: map-get($theme-colors, default);
+                            color: #fff;
+                        }
+                    }
+
+                    span {
+                        padding: 5px 10px;
+                        border-radius: $border-radius-regular;
+                        @extend .bg_primary-clr, .txt_white-clr, .in-block, .simple-mono-transition !optional;
+                    }
+
+                    > table {
+                        @extend .in-table !optional;
+
+                        tr {
+                            td {
+                                border: 0;
+                                padding: 5px;
+                            }
+
+                            @if ($is-cornered) {
+                                &:first-child {
+                                    td {
+                                        @include border-radius-all(0, 0, 0, $border-radius-regular);
+                                    }
+                                }
+
+                                &:last-child {
+                                    td {
+                                        @include border-radius-all(0, 0, $border-radius-regular, 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.no-border {
+            tr {
+                td {
+                    border: none;
+                }
+            }
+        }
+
+        &.outlined {
+            border: $grid-border-width $grid-border-style #ddd;
+
+            @if ($is-cornered) {
+                border-radius: $border-radius-regular;
+            }
+        }
+
+        &.striped-grid {
+            tr {
+                th, td {
+                    border: none;
+                }
+
+                &:nth-child(even) {
+                    background-color: map-get($grey-shadows, 0);
+                }
+            }
+        }
+    }
+}
+/* End Grid */

@@ -1,0 +1,125 @@
+// variables
+@import "accordion-variables";
+
+.#{$prefix}-accordion {
+    .panel {
+        background-color: transparent;
+
+        @if($is-acc-bordered) {
+            border: $acc-border-width $acc-border-style $acc-border-color;
+        }
+
+        @else {
+            border: none;
+        }
+
+        @if($is-acc-cornered) {
+            border-radius: $acc-border-radius;
+        }
+
+        @else {
+            border-radius: 0;
+        }
+
+        @if not $acc-vert-spacing {
+            + .panel {
+                margin-top: $acc-vert-spacing;
+            }
+        }
+
+        .panel-collapse {
+            &.collapsing {
+                -moz-transition: height $acc-anim-dur ease-in-out;
+                -o-transition: height $acc-anim-dur ease-in-out;
+                -webkit-transition: height $acc-anim-dur ease-in-out;
+                transition: height $acc-anim-dur ease-in-out;
+            }
+        }
+
+        > .panel-heading {
+            padding: 0;
+            background-color: transparent;
+            border-radius: 0;
+
+            .panel-title {
+                > a {
+                    padding: 10px 15px;
+                    cursor: default;
+                    color: $acc-header-txt-clr;
+                    background-color: $acc-header-bg-clr;
+
+                    @if ($is-acc-cornered) {
+                        border-top-left-radius: $acc-border-radius;
+                        border-top-right-radius: $acc-border-radius;
+                    }
+
+                    @else {
+                        border-radius: 0;
+                    }
+
+                    @if ($is-header-iconed) {
+                        &:before {
+                            content: $acc-header-icon;
+                            font-size: .8em;
+                            @include end(20px);
+                            @extend .font-icon, .center-vert, .simple-mono-transition;
+                        }
+                    }
+
+                    &:hover {
+                        color: $acc-header-hover-txt-clr;
+                        background-color: $acc-header-hover-bg-clr;
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                    }
+
+                    &:active {
+                        box-shadow: inset 0 3px 3px -3px rgba(0, 0, 0, 0.4);
+                    }
+
+                    @extend .block, .simple-mono-transition, .relative;
+
+                    &.collapsed {
+                        &:before {
+                            -moz-transform: scaleY(-1) translateY(50%);
+                            -ms-transform: scaleY(-1) translateY(50%);
+                            -o-transform: scaleY(-1) translateY(50%);
+                            -webkit-transform: scaleY(-1) translateY(50%);
+                            transform: scaleY(-1) translateY(50%);
+                        }
+                    }
+                }
+            }
+
+            + .panel-collapse {
+                > .panel-body {
+                    color: $acc-body-txt-clr;
+                    background-color: $acc-body-bg-clr;
+
+                    @if ($is-acc-bordered) {
+                        border-top: $acc-border-width $acc-border-style $acc-border-color;
+                    }
+
+                    @else {
+                        border-top: 0;
+                    }
+                }
+            }
+        }
+
+        @if ($acc-vert-spacing == 0) {
+            + .panel {
+                margin-top: 0;
+                border-top: 0;
+                border-radius: 0;
+
+                > .panel-heading {
+                    .panel-title {
+                        > a {
+                            border-radius: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

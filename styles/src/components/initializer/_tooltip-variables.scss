@@ -1,0 +1,18 @@
+﻿$tooltip-shiftSpacing: 9px;
+$has-caret: true;
+$tooltip-caret-size: 6px;
+$tooltip-bg-clr: map-get($grey-shadows, 3);
+$tooltip-txt-color: #fff;
+$is-tooltip-bordered: true;
+$is-tooltip-cornered: $gen-is-cornered;
+$tooltip-border-radius: 0;
+$tooltip-border-width: 1px;
+$tooltip-border-style: solid;
+$tooltip-border-color: #ccc;
+
+// font sizes
+$fs-xs: .5em;
+$fs-sm: .7em;
+$fs-md: .9em;
+$fs-lg: 1.1em;
+$fs-xl: 1.3em;

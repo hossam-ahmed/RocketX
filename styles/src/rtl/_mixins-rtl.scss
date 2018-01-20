@@ -1,0 +1,153 @@
+﻿// Common Mixins
+@import "../core/_common-mixins.scss";
+
+// Layouts
+@mixin start($distance) {
+    right: $distance;
+}
+
+@mixin end($distance) {
+    left: $distance;
+}
+
+@mixin pull-start() {
+    float: right;
+}
+
+@mixin pull-end() {
+    float: left;
+}
+
+@mixin txt-start() {
+    text-align: right;
+}
+
+@mixin txt-end() {
+    text-align: left;
+}
+
+// Carets
+@mixin start-caret($caret-color, $dim) {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: $dim solid transparent;
+    border-right: $dim solid $caret-color;
+    border-bottom: $dim solid transparent;
+    border-left: 0;
+}
+
+@mixin end-caret($caret-color, $dim) {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: $dim solid transparent;
+    border-right: 0;
+    border-bottom: $dim solid transparent;
+    border-left: $dim solid $caret-color;
+}
+
+// Borders
+@mixin border-start($val) {
+    border-right: $val;
+}
+
+@mixin border-end($val) {
+    border-left: $val;
+}
+
+@mixin border-radius-all($top-end, $top-start, $bottom-start, $bottom-end) {
+    border-radius: $top-start $top-end $bottom-end $bottom-start;
+}
+
+// Paddings & Margins
+@mixin padd-start($val) {
+    padding-right: $val;
+}
+
+@mixin padd-end($val) {
+    padding-left: $val;
+}
+
+@mixin mr-start($val) {
+    margin-right: $val;
+}
+
+@mixin mr-end($val) {
+    margin-left: $val;
+}
+
+@mixin padd-all($top, $start, $bottom,$end) {
+    padding: $top $end $bottom $start;
+}
+
+@mixin mr-all($top, $start, $bottom,$end) {
+    margin: $top $end $bottom $start;
+}
+
+@mixin flip-horiz($extraTrans: '') {
+    -moz-transform: $extraTrans scaleX(-1);
+    -ms-transform: $extraTrans scaleX(-1);
+    -o-transform: $extraTrans scaleX(-1);
+    -webkit-transform: $extraTrans scaleX(-1);
+    transform: $extraTrans scaleX(-1);
+}
+
+// Transforms
+@mixin move-start($distance, $extra-trans: '') {
+    -moz-transform: $extra-trans translateX($distance);
+    -ms-transform: $extra-trans translateX($distance);
+    -o-transform: $extra-trans translateX($distance);
+    -webkit-transform: $extra-trans translateX($distance);
+    transform: $extra-trans translateX($distance);
+}
+
+@mixin move-end($distance, $extra-trans: "") {
+    -moz-transform: $extra-trans translateX(-$distance);
+    -ms-transform: $extra-trans translateX(-$distance);
+    -o-transform: $extra-trans translateX(-$distance);
+    -webkit-transform: $extra-trans translateX(-$distance);
+    transform: $extra-trans translateX(-$distance);
+}
+
+// Language Fonts
+@mixin get-font() {
+    $basic-font: -apple-system, BlinkMacSystemFont,"${custom-font}" !global;
+    $basic-font-bold: -apple-system, BlinkMacSystemFont,"${custom-font-bold}" !global;
+    $basic-other-lang-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", sans-serif"${custom-font}" !global;
+    $basic-other-lang-bold-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", sans-serif, "${custom-font-bold}" !global;
+    $basic-english-font: $basic-other-lang-font !global;
+    $custom-font-baseshift: 0 !global;
+}
+
+@mixin set-directions() {
+    $start-txt: "right" !global;
+    $end-txt: "left" !global;
+    $start: right !global;
+    $end: left !global;
+    $dir: rtl !global;
+    $lang: "ar" !global;
+
+    .icon-start {
+        &:before {
+            @extend .icon-keyboard_arrow_left:before !optional;
+        }
+    }
+
+    .icon-end {
+        &:before {
+            @extend .icon-keyboard_arrow_right:before !optional;
+        }
+    }
+}
+
+@mixin set-constants() {
+    $inverse-const: 1 !global;
+}
+
+/*@mixin load-angular_material() {
+    @if ($load-bangular_material) {
+        // load bootstrap before our styles
+        @import "../vendors/angular-material/angular-material.scss";
+    }
+}*/

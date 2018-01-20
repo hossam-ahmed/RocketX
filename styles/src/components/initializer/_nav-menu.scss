@@ -1,0 +1,323 @@
+﻿// variables
+@import "nav-menu-variables";
+
+.nav-menu-placeholder {
+    @extend .in-block, .cubic-bezier-mono-transition;
+
+    .nav-menu-home-link {
+        @extend .simple-mono-transition;
+    }
+
+    .ms-core-listMenu-horizontalBox, .ms-core-listMenu-verticalBox {
+        @extend .block;
+
+        .ms-core-listMenu-root {
+            @extend .block;
+
+            > li {
+                > ul.static {
+                    > li {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .ms-core-listMenu-horizontalBox {
+        .ms-core-listMenu-root {
+            > li {
+                // menu table
+                @extend .table-layout;
+                // hide root item
+                @if ($hide-root-item) {
+                    > a {
+                        @extend .hide;
+                    }
+                }
+                // menu table row
+                > ul.static {
+                    @extend .table-row;
+                    // menu table cell (menu item)
+                    > li {
+                        @extend .table-cell, .va-middle, .txt-center, .relative, .simple-mono-transition, .zero-padd !optional;
+
+                        > span, > a {
+                            padding: $menu-item-vert-padd $menu-item-horiz-padd;
+                            font-size: $menu-font-size;
+                            cursor: pointer;
+                            margin: 0;
+                            background-color: $menu-item-bg-clr;
+                            color: $menu-item-txt-clr;
+
+                            @if ($is-menu-bordered) {
+                                border: $menu-border-width $menu-border-style $menu-border-color;
+                            }
+
+                            @if ($is-menu-bordered!=true) {
+                                border: none;
+                            }
+
+                            @if ($is-menu-cornered) {
+                                border-radius: $menu-border-radius;
+                            }
+
+                            @if ($is-menu-cornered!=true) {
+                                border-radius: 0;
+                            }
+
+                            @extend .block, .relative, .simple-mono-transition;
+                            /*&:before {
+                                content: '';
+                                right: 50%;
+                                left: 50%;
+                                top: 0;
+                                height: 2px;
+                                background-color: #fff;
+                                opacity: 0;
+                                visibility: hidden;
+                                &:extend(.absolute, .cubic-bezier-mono-transition);
+                            }
+
+                            &:after {
+                                .bottom-caret(#fff, 3px);
+                                top: 2px;
+                                left: 0;
+                                right: 0;
+                                margin: auto;
+                                opacity: 0;
+                                visibility: hidden;
+                                &:extend(.absolute, .cubic-bezier-mono-transition);
+                            }*/
+                            // menu item hover
+                            &:hover {
+                                background-color: $menu-item-hover-bg-clr;
+                                color: $menu-item-txt-hover-clr;
+                            }
+                        }
+                        // menu dropdown
+                        > ul.dynamic {
+                            top: 100% !important;
+                            width: auto !important;
+                            background-color: $menu-dd-bg-clr;
+                            padding: $menu-dd-vert-padd $menu-dd-horiz-padd;
+                            -moz-transform-origin: $menu-dd-trans-origin;
+                            -ms-transform-origin: $menu-dd-trans-origin;
+                            -o-transform-origin: $menu-dd-trans-origin;
+                            -webkit-transform-origin: $menu-dd-trans-origin;
+                            transform-origin: $menu-dd-trans-origin;
+                            -moz-transition-delay: $menu-dd-release-delay;
+                            -o-transition-delay: $menu-dd-release-delay;
+                            -webkit-transition-delay: $menu-dd-release-delay;
+                            transition-delay: $menu-dd-release-delay;
+                            z-index: 100;
+                            @include start(0 !important);
+
+                            @if ($is-menu-dd-bordered) {
+                                border: $menu-dd-border;
+                            }
+                            @else {
+                                border: none
+                            }
+
+                            @if ($is-menu-dd-shaded) {
+                                box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+                            }
+                            @else {
+                                box-shadow: none;
+                            }
+
+                            @if ($is-menu-dd-cornered) {
+                                border-radius: $menu-dd-border-radius;
+                            }
+
+                            @else{
+                                border-radius: 0;
+                            }
+
+                            @if ($menu-dd-anim-effect==slide-down) {
+                                -moz-transform: scaleY(0);
+                                -ms-transform: scaleY(0);
+                                -o-transform: scaleY(0);
+                                -webkit-transform: scaleY(0);
+                                transform: scaleY(0);
+                            }
+
+                            @extend .border-box, .absolute, .fade-out, .block;
+
+                            @if ($menu-dd-anim-func==cubic) {
+                                @extend .cubic-bezier-mono-transition;
+                            }
+
+                            @if ($menu-dd-anim-func==simple) {
+                                @extend .simple-mono-transition;
+                            }
+
+                            > li {
+                                @extend .block;
+
+                                > a {
+                                    padding: $menu-dd-item-vert-padd $menu-dd-item-horiz-padd;
+                                    text-decoration: none;
+                                    font: normal .85em $basic-font;
+                                    background-color: $menu-dd-item-bg-clr;
+                                    color: $menu-dd-item-txt-clr;
+                                    white-space: nowrap;
+                                    cursor: pointer;
+                                    @extend .txt-start, .border-box, .block, .simple-mono-transition;
+
+                                    &:hover {
+                                        color: $menu-dd-item-hover-txt-clr;
+                                        background-color: $menu-dd-item-hover-bg-clr;
+                                    }
+                                }
+                            }
+
+                            @if ($show-menu-dd-caret) {
+                                &:before {
+                                    $dim: $menu-dd-caret-size;
+                                    @include top-caret($menu-dd-caret-clr, $dim);
+                                    top: -((2*$dim) - 1);
+                                    left: 0;
+                                    right: 0;
+                                    margin: auto;
+                                    @extend .absolute;
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            > ul.dynamic {
+                                @if ($menu-dd-anim-effect==slide-down) {
+                                    -moz-transform: scaleY(1);
+                                    -ms-transform: scaleY(1);
+                                    -o-transform: scaleY(1);
+                                    -webkit-transform: scaleY(1);
+                                    transform: scaleY(1);
+                                }
+
+                                -moz-transition-delay: $menu-dd-hover-delay;
+                                -o-transition-delay: $menu-dd-hover-delay;
+                                -webkit-transition-delay: $menu-dd-hover-delay;
+                                transition-delay: $menu-dd-hover-delay;
+                                @extend .fade-in;
+                            }
+                        }
+
+                        &.selected {
+                            > span, > a {
+                                cursor: default;
+                                color: $menu-selec-item-txt-clr;
+                                background-color: $menu-selec-item-bg-clr;
+
+                                &:hover {
+                                    color: $menu-selec-item-hover-txt-clr;
+                                    background-color: $menu-selec-item-hover-bg-clr;
+                                }
+                            }
+                        }
+
+                        &.dynamic-children {
+                            > a {
+                                @include padd-end(35px);
+
+                                &.dynamic-children {
+                                    .dynamic-children.additional-background {
+                                        @include padd-end(0);
+                                        background: no-repeat;
+                                    }
+                                }
+                            }
+
+                            &:after {
+                                content: $item-has-children-icon;
+                                color: $item-has-children-icon-txt-clr;
+                                background-color: $item-has-children-icon-bg-clr;
+                                border-radius: 50%;
+                                @include end(10px);
+                                z-index: 20;
+                                @extend .font-icon, .simple-mono-transition, .center-vert;
+                            }
+
+                            &:hover {
+                                &:after {
+                                    -moz-transform: rotate(360deg) translateY(-50%);
+                                    -ms-transform: rotate(360deg) translateY(-50%);
+                                    -o-transform: rotate(360deg) translateY(-50%);
+                                    -webkit-transform: rotate(360deg) translateY(-50%);
+                                    transform: rotate(360deg) translateY(-50%);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .ms-core-listMenu-verticalBox {
+        .ms-core-listMenu-root {
+            > li {
+                > a {
+                    //@extend .side-menu-wrapper .side-menu-nav .side-menu-item.header-item .side-menu-link, .side-menu-wrapper .side-menu-nav .side-menu-item .side-menu-link, .relative;
+                    .menu-item-text {
+                        font-family: $basic-font;
+                    }
+
+                    &:hover {
+                        background-color: #101010;
+                    }
+                }
+
+                > ul.static {
+                    > li {
+                        @extend .relative;
+
+                        > span, > a {
+                            /*@extend .side-menu-wrapper .side-menu-nav .side-menu-item .side-menu-link;*/
+                            padding: 10px 20px !important;
+
+                            &:hover {
+                                /*@extend .side-menu-wrapper .side-menu-nav .side-menu-item .side-menu-link:hover;*/
+                            }
+                        }
+
+                        &:before {
+                            background-color: #8c8c8c;
+                            /*@extend .side-menu-wrapper .side-menu-nav .side-menu-item:before;*/
+                        }
+
+                        &.selected {
+                            > span, > a {
+                                background-color: #f5f5f5;
+
+                                &:hover {
+                                    background-color: #f5f5f5;
+                                }
+                            }
+
+                            &:before {
+                                /*@extend .side-menu-wrapper .side-menu-nav .side-menu-item.selected:before;*/
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.vertical-nav-menu {
+        .side-menu-nav {
+            background-color: transparent;
+            box-shadow: none;
+
+            .ms-core-listMenu-root {
+                > li {
+                    @extend .sandbox, .mr-t20;
+                }
+
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

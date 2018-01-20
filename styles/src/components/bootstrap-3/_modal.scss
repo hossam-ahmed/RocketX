@@ -1,0 +1,36 @@
+// variables
+@import "modal-variables";
+
+.modal {
+    @include padd-end(0 !important);
+
+    .modal-content {
+        @if ($is-modal-cornered) {
+            border-radius: $modal-border-radius;
+        }
+        @else {
+            border-radius: 0;
+        }
+
+        .modal-header {
+            @extend .relative;
+
+            .close {
+                margin-top: 0;
+                border-radius: 50%;
+                padding: 10px;
+                outline: none;
+                @include end(10px);
+                @extend .simple-mono-transition, .center-vert;
+
+                &:active {
+                    background-color: #ccc;
+                }
+            }
+
+            .modal-title {
+                font-weight: normal;
+            }
+        }
+    }
+}
