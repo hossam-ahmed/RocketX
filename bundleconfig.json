@@ -1,8 +1,0 @@
-[
-  {
-    "outputFileName": "scripts/bundled/ui-kit.min.js",
-    "inputFiles": [
-      "scripts/sources/ui-kit.js"
-    ]
-  }
-]
